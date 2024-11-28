@@ -1,0 +1,16 @@
+Django >=3.0.3, <3.1
+django-environ >=0.4.5
+djangorestframework >=3.11.0
+requests >=2.22, <3.0
+coreapi >=2.3.3
+django-filter >=2.2, <3.0
+django-redis >=4, <5
+Celery >= 4.1.0, <5.0.0
+psycopg2-binary==2.8.6
+gunicorn
+python-magic == 0.4.18
+openapi-codec == 1.3.2
+djangorestframework-simplejwt == 4.6.0
+google-cloud-storage == 1.29.0
+django-storages == 1.9.1
+pillow == 7.2.0

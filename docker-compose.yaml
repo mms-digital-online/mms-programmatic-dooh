@@ -1,0 +1,36 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:12
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: offliner
+
+  redis:
+    image: redis:3.2
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./.data/redis:/data
+
+  worker-default:
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app
+    environment:
+      PORT: 8080
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SECRET_KEY: secret
+    depends_on:
+      - postgres
+      - redis
+    command: celery worker

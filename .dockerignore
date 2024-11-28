@@ -1,0 +1,8 @@
+**/*.pyc
+**/*.pyo
+
+venv
+.data
+.idea
+.git
+__pycache__
